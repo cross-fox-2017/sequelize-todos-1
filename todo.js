@@ -2,7 +2,7 @@
 //write your code here
 var db = require("./models");
 
-let listMenu = ["# will call help",
+let listMenu = ["Wellcome to TODO list !!",
                 "node todo.js help",
                 "node todo.js list",
                 "node todo.js add <task_content>",
