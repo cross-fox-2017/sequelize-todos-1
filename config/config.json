@@ -1,0 +1,8 @@
+{
+    "development": {
+        "storage": "db/todo.db",
+        "dialect": "sqlite",
+        "seederStorage": "sequelize",
+        "logging": false
+    }
+}
