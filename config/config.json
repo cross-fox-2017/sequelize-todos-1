@@ -1,0 +1,6 @@
+{
+  "development": {
+    "storage": "./db/todo.db",
+    "dialect": "sqlite"
+  }
+}
