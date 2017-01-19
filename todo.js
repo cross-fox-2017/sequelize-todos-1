@@ -1,41 +1,63 @@
-'use strict';
+'use strict'
 
 const db = require('./models')
 const faker = require('faker')
 const chalk = require('chalk')
 
+//View
+function completed(data) {
+  console.log(`ID: ${chalk.bold.red(data.id)} Task: ${chalk.bold(data.task)} ${chalk.bold.green(data.complete)}`);
+}
+function yetCompleted(data){
+  console.log(`ID: ${chalk.bold.red(data.id)} Task: ${chalk.bold(data.task)} Not Completed Yet`)
+}
+function created(){
+  console.log('New Task Created');
+}
+function deleted(id){
+  console.log(`Task ${id} Deleted`);
+}
+function updated(id){
+  console.log(`Task ${id} Completed`);
+}
+function helper(){
+  console.log(`list\naddTask <taskName>\ndeleteTask <id>\ncomplete <id>\nhelp`);
+}
+
+//models
 function list(){
   db.Todo.findAll().then(function(val){
     val.forEach(function(val){
       if (val.dataValues.complete == "Completed"){
-        console.log(`ID: ${chalk.bold.red(val.dataValues.id)} Task: ${chalk.bold(val.dataValues.task)} ${chalk.bold.green(val.dataValues.complete)}`);
+        completed(val.dataValues)
       } else {
-        console.log(`ID: ${chalk.bold.red(val.dataValues.id)} Task: ${chalk.bold(val.dataValues.task)} Not Completed Yet`)
+        yetCompleted(val.dataValues)
       }
     })
   })
 }
 function addTask(task) {
   db.Todo.create({task:task}).then(function(){
-    console.log('New Task Created');
+    created()
   })
 }
 function deleteTask(id){
   db.Todo.destroy({where: {id: id}}).then(function(){
-    console.log(`Task ${id} Deleted`);
+    deleted(id)
   })
 }
 function complete(id){
   db.Todo.findById(id).then(function(data){
     data.update({complete:"Completed"}).then(function(){
-      console.log(`Task ${id} Completed`);
+      updated(id)
     })
   })
 }
 function help(){
-  console.log(`list()\naddTask <taskName>\ndeleteTask <id>\ncomplete <id>\nhelp()`);
+  helper()
 }
 
+//controller
 function run(){
   let cmd = process.argv[2];
   let taskid = process.argv.slice(3).join(" ");
@@ -60,8 +82,5 @@ function run(){
   }
 }
 
+//todo.js
 run()
-// list()
-// addTask('tester data')
-// deleteTask(8)
-// complete(3)
