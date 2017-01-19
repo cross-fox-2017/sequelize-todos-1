@@ -12,15 +12,10 @@ switch(argv[2]){
   console.log(`===============HELP===============`);
   console.log(`${node} add <task content>`);
   console.log(`${node} list`);
-  console.log(`${node} uncomplete-list asc|dsc`);
-  console.log(`${node} complete-list asc|dsc`);
-  console.log(`${node} tag <tag_id> <tag1> <tagn>`);
-  console.log(`${node} filter <tag-name`);
   console.log(`${node} help`);
   console.log(`${node} delete <task_id>`);
   console.log(`${node} complete <task_id>`);
   console.log(`${node} uncomplete <task_id`);
-  console.log(`${node} task <task_id>`);
   break;
 
   case 'add' :
