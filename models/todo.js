@@ -7,7 +7,11 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
-      }
+      },
+      // getListMenu:function(callBack){
+      //   todo.findAll().then(function(menuTodos))
+      //   callBack(menuTodos)
+      // }
     }
   });
   return todo;
