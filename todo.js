@@ -48,7 +48,7 @@ if(argv[2] == "complete"){
   }else {
     db.todo.findById(argv[3]).then(function(listTodo){
       listTodo.update({status : true})
-      console.log(`sucsess!!`);
+      console.log(`task has ben complete!!`);
     })
   }
 }
@@ -60,7 +60,7 @@ if(argv[2] == "uncomplete"){
   else {
     db.todo.findById(argv[3]).then(function(listTodo){
       listTodo.update({status:false})
-        console.log(`sucsess!!`);
+        console.log(`Task has ben uncomplete!!`);
     })
   }
 }
@@ -75,7 +75,7 @@ if(argv[2] == "delete"){
         id:argv[3]
       }
     }).then(function(){
-      console.log('Succsess deleted !!');
+      console.log('Task has ben deleted!!');
     }).catch(function(e){
       console.log(e.message);
     })
