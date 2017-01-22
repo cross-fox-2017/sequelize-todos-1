@@ -45,20 +45,49 @@ switch (argv[2]) {
 
   case  "complete" :
     db.Todo.findById(argv[3]).then(function(todo){
-      if(todo.completed == false){
-        todo.updateAttributes({
-          completed : true
+      if(todo == null){
+        db.Todo.findAll().then(function(todo){
+          console.log(`\nid is not found, here is a list of available key-id :`);
+          for(var i=0; i<todo.length; i++){
+            console.log(`${todo[i].id} -- ${todo[i].task}`);
+          }
         })
       }
+      else{
+        todo.updateAttributes({
+            completed : true
+          })
+        console.log(`data status has been changed`);
+        }
+      // if(todo.completed == false){
+      //   todo.updateAttributes({
+      //     completed : true
+      //   })
+      // }
+      // else{
+      //   console.log(`id is not found, here is a list of available id :`)
+      //   for(var i=0; i<todo.length; i++){
+      //     console.log(`${todo.id}. ${todo.task}`);
+      //   }
+      // }
     })
     break
 
   case  "uncomplete" :
     db.Todo.findById(argv[3]).then(function(todo){
-      if(todo.completed == true){
+      if(todo == null){
+        db.Todo.findAll().then(function(todo){
+          console.log(`\nid is not found, here is a list of available key-id :`);
+          for(var i=0; i<todo.length; i++){
+            console.log(`${todo[i].id} -- ${todo[i].task}`);
+          }
+        })
+      }
+      else{
         todo.updateAttributes({
           completed : false
         })
+        console.log(`data status has been changed`);
       }
     })
     break
